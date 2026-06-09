@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+
+class  LoginScreen extends StatelessWidget {
+   LoginScreen({super.key});
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Login")),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            TextField(
+              controller: passwordController,
+              obscureText: true,
+              decoration: InputDecoration(labelText: "Password"),
+            ),
+            SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                if (emailController.text.isNotEmpty &&
+                    passwordController.text.isNotEmpty) {
+                  Navigator.pushReplacementNamed(context, '/home');
+                }
+              },
+              child: Text("Login"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
